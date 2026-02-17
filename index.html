@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Biz Admin | Administration Solutions for Australian Small Businesses</title>
+    <meta name="description" content="Premium administration assistance for owner-operator and small businesses in Brisbane. Invoicing, data entry, compliance and reporting for a fraction of the cost of a part-time employee.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1B2A4A;
+            --navy-light: #2A3F6B;
+            --navy-dark: #111C35;
+            --warm: #D4956A;
+            --warm-light: #E8B08A;
+            --warm-dark: #B87A52;
+            --cream: #FAF7F2;
+            --cream-dark: #F0EBE1;
+            --text: #2D2D2D;
+            --text-muted: #6B6B6B;
+            --white: #FFFFFF;
+            --border: #E4DDD3;
+            --font-display: 'Instrument Serif', Georgia, serif;
+            --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.65;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============ NAV ============ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(250, 247, 242, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: box-shadow 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(27, 42, 74, 0.08);
+        }
+
+        .nav-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        .logo span { color: var(--warm); }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--navy); }
+
+        .nav-cta {
+            background: var(--navy);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 100px;
+            font-weight: 600 !important;
+            transition: background 0.2s, transform 0.2s !important;
+        }
+        .nav-cta:hover {
+            background: var(--navy-light) !important;
+            transform: translateY(-1px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--navy);
+            margin: 6px 0;
+            transition: 0.3s;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            padding: 160px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 149, 106, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--warm-dark);
+            margin-bottom: 28px;
+            animation: fadeUp 0.6s ease both;
+        }
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--warm);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 5vw, 3.8rem);
+            line-height: 1.12;
+            color: var(--navy);
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+            animation: fadeUp 0.6s ease 0.1s both;
+        }
+        .hero h1 em {
+            color: var(--warm);
+            font-style: italic;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 480px;
+            margin-bottom: 36px;
+            animation: fadeUp 0.6s ease 0.2s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            animation: fadeUp 0.6s ease 0.3s both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--navy);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(27, 42, 74, 0.2);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--navy);
+            padding: 16px 32px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid var(--border);
+            transition: all 0.25s ease;
+        }
+        .btn-outline:hover {
+            border-color: var(--navy);
+            background: var(--white);
+        }
+
+        /* Hero visual - floating task cards */
+        .hero-visual {
+            position: relative;
+            height: 460px;
+            animation: fadeUp 0.8s ease 0.3s both;
+        }
+
+        .task-card {
+            position: absolute;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: 0 4px 24px rgba(27, 42, 74, 0.08);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: transform 0.3s ease;
+            white-space: nowrap;
+        }
+        .task-card:hover { transform: translateY(-4px) !important; }
+
+        .task-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .task-card .task-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--navy);
+        }
+        .task-card .task-status {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .tc-1 { top: 20px; left: 10px; animation: float 6s ease-in-out infinite; }
+        .tc-1 .task-icon { background: #E8F4EC; color: #2D8B4E; }
+
+        .tc-2 { top: 110px; right: 0; animation: float 6s ease-in-out 1s infinite; }
+        .tc-2 .task-icon { background: #E3EDF8; color: #3366A8; }
+
+        .tc-3 { top: 210px; left: 30px; animation: float 6s ease-in-out 2s infinite; }
+        .tc-3 .task-icon { background: #FFF3E8; color: #C45C26; }
+
+        .tc-4 { top: 320px; right: 20px; animation: float 6s ease-in-out 3s infinite; }
+        .tc-4 .task-icon { background: #F3E8F8; color: #8B4EC9; }
+
+        .tc-done {
+            position: absolute;
+            top: 380px;
+            left: 60px;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 100px;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: float 6s ease-in-out 4s infinite;
+        }
+        .tc-done::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--warm);
+            border-radius: 50%;
+            font-size: 0.75rem;
+        }
+
+        /* ============ PAIN POINTS ============ */
+        .pain {
+            background: var(--navy);
+            padding: 100px 0;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pain::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .pain-header {
+            text-align: center;
+            margin-bottom: 64px;
+            position: relative;
+        }
+
+        .pain-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .pain-header p {
+            color: rgba(255,255,255,0.65);
+            font-size: 1.1rem;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            position: relative;
+        }
+
+        .pain-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        .pain-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+
+        .pain-emoji {
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+        }
+
+        .pain-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--warm-light);
+        }
+
+        .pain-card p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        /* ============ SERVICES ============ */
+        .services {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--warm);
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--navy);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.08rem;
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card:hover {
+            box-shadow: 0 8px 40px rgba(27, 42, 74, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--warm);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .service-card:hover::after { opacity: 1; }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 1.4rem;
+        }
+
+        .si-invoice { background: #E8F4EC; }
+        .si-data { background: #E3EDF8; }
+        .si-email { background: #FFF3E8; }
+        .si-report { background: #F3E8F8; }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .service-tag {
+            background: var(--cream);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        /* ============ WHY US ============ */
+        .why {
+            padding: 100px 0;
+            background: var(--cream-dark);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .why-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            color: var(--navy);
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+        }
+
+        .why-content > p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+        }
+
+        .why-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .why-check {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--warm);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .why-item-text h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .why-item-text p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        /* Pricing visual */
+        .why-visual {
+            background: var(--white);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            padding: 40px;
+            box-shadow: 0 4px 24px rgba(27, 42, 74, 0.06);
+        }
+
+        .comparison-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .comp-col-head {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .comp-them { background: #FDE8E8; color: #A33; }
+        .comp-us { background: #E0F2E9; color: #2D7A4E; }
+
+        .comparison-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .comp-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            font-size: 0.88rem;
+        }
+
+        .comp-cell {
+            padding: 14px 16px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .comp-cell.them {
+            background: #FEF5F5;
+            color: #8B4444;
+        }
+
+        .comp-cell.us {
+            background: #F0FAF3;
+            color: #2D6B45;
+            font-weight: 600;
+        }
+
+        /* ============ ABOUT ============ */
+        .about {
+            padding: 100px 0;
+        }
+
+        .about-inner {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-photo {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M20 20.5V18H0v-2h20V0h2v18h18v2H22v20h-2V20.5z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .about-photo-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .about-photo-text {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        .about-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3.5vw, 2.4rem);
+            color: var(--navy);
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 16px;
+            line-height: 1.75;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .about-stat {
+            text-align: center;
+            padding: 20px 8px;
+            background: var(--cream-dark);
+            border-radius: 14px;
+        }
+
+        .about-stat .num {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--navy);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .about-stat .label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ============ CTA ============ */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 149, 106, 0.15) 0%, transparent 70%);
+        }
+
+        .cta-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+
+        .cta-section p {
+            color: rgba(255,255,255,0.65);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 36px;
+            position: relative;
+        }
+
+        .cta-section .btn-warm {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--warm);
+            color: var(--white);
+            padding: 18px 40px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+        .cta-section .btn-warm:hover {
+            background: var(--warm-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 149, 106, 0.3);
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            background: var(--navy-dark);
+            color: rgba(255,255,255,0.5);
+            padding: 48px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .footer-logo span { color: var(--warm); }
+
+        footer a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        footer a:hover { color: var(--warm-light); }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            font-size: 0.88rem;
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+            .hero-visual { height: 320px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; gap: 48px; }
+            .about-inner { grid-template-columns: 1fr; gap: 48px; }
+            .pain-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 120px 0 80px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-visual { display: none; }
+            .hero-actions { flex-direction: column; }
+            .btn-primary, .btn-outline { text-align: center; justify-content: center; }
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: var(--cream);
+                padding: 24px;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            }
+            .pain-grid { grid-template-columns: 1fr; }
+            .comparison-header, .comp-row { grid-template-columns: 1fr 1fr; }
+            .about-stats { grid-template-columns: repeat(3, 1fr); }
+            .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .task-card { padding: 14px 18px; }
+            .task-icon { width: 36px; height: 36px; }
+            .about-stats { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="logo">Small Biz <span>Admin</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why">Why Us</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <div class="hero-badge">Brisbane-based admin team</div>
+                    <h1>Stop working <em>nights &amp; weekends</em> on paperwork</h1>
+                    <p class="hero-sub">Premium administration assistance for owner-operators and small businesses, for a fraction of the cost of a part-time employee.</p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn-primary">
+                            Get in Touch
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                        <a href="#services" class="btn-outline">See What We Do</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="task-card tc-1">
+                        <div class="task-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 7h8"/><path d="M8 11h5"/></svg>
+                        </div>
+                        <div>
+                            <div class="task-label">Invoices Sent</div>
+                            <div class="task-status">12 processed today</div>
+                        </div>
+                    </div>
+                    <div class="task-card tc-2">
+                        <div class="task-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+                        </div>
+                        <div>
+                            <div class="task-label">Calendar Updated</div>
+                            <div class="task-status">3 meetings booked</div>
+                        </div>
+                    </div>
+                    <div class="task-card tc-3">
+                        <div class="task-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div>
+                            <div class="task-label">Inbox Cleared</div>
+                            <div class="task-status">Zero unread emails</div>
+                        </div>
+                    </div>
+                    <div class="task-card tc-4">
+                        <div class="task-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                        </div>
+                        <div>
+                            <div class="task-label">Monthly Report</div>
+                            <div class="task-status">Ready for review</div>
+                        </div>
+                    </div>
+                    <div class="tc-done">All tasks handled</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAIN POINTS -->
+    <section class="pain">
+        <div class="container">
+            <div class="pain-header reveal">
+                <h2>Sound familiar?</h2>
+                <p>You didn't start a business to spend your evenings doing data entry and chasing invoices.</p>
+            </div>
+            <div class="pain-grid">
+                <div class="pain-card reveal">
+                    <div class="pain-emoji">📥</div>
+                    <h3>Drowning in emails</h3>
+                    <p>Important client messages are buried under a mountain of unread mail. Things are slipping through the cracks and you know it.</p>
+                </div>
+                <div class="pain-card reveal">
+                    <div class="pain-emoji">🧾</div>
+                    <h3>Invoices piling up</h3>
+                    <p>Late invoicing means late payments. You're owed thousands but never find time to chase it up, so cash flow suffers.</p>
+                </div>
+                <div class="pain-card reveal">
+                    <div class="pain-emoji">📊</div>
+                    <h3>Flying blind</h3>
+                    <p>No idea what last month's margins looked like. You're making gut-feel decisions because the reporting just isn't there.</p>
+                </div>
+                <div class="pain-card reveal">
+                    <div class="pain-emoji">📋</div>
+                    <h3>Compliance stress</h3>
+                    <p>BAS deadlines, regulatory requirements, record-keeping. It all lands on your desk and the penalties for getting it wrong are real.</p>
+                </div>
+                <div class="pain-card reveal">
+                    <div class="pain-emoji">🕐</div>
+                    <h3>No time for the real work</h3>
+                    <p>Admin is eating into the hours you should be spending on clients, sales, and actually growing your business.</p>
+                </div>
+                <div class="pain-card reveal">
+                    <div class="pain-emoji">😤</div>
+                    <h3>Can't justify hiring</h3>
+                    <p>A part-time employee means super, payroll tax, leave, and management overhead. You need the help, but not the headcount.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">What We Do</span>
+                <h2>We handle the admin so you don't have to</h2>
+                <p>Four core services that cover the essentials every small business needs, delivered by people who understand your tools.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon si-invoice">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2D8B4E" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/></svg>
+                    </div>
+                    <h3>Invoicing &amp; Banking</h3>
+                    <p>We generate invoices, send them to your clients, reconcile bank transactions, and prepare your BAS statements. We also chase outstanding receivables so you get paid on time, without the awkward conversations.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">MYOB</span>
+                        <span class="service-tag">Xero</span>
+                        <span class="service-tag">Reckon</span>
+                        <span class="service-tag">BAS Prep</span>
+                        <span class="service-tag">AR Recovery</span>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon si-data">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3366A8" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                    </div>
+                    <h3>Data Entry &amp; Compliance</h3>
+                    <p>Keep your critical documents, databases, and records up to date and audit-ready. Especially valuable for businesses with legislative or regulatory requirements that can't afford to fall behind.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">Database Management</span>
+                        <span class="service-tag">Document Filing</span>
+                        <span class="service-tag">Regulatory Records</span>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon si-email">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C45C26" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <h3>Email &amp; Calendar Management</h3>
+                    <p>We have a <strong>never-miss-an-email guarantee</strong>. Every message gets a timely response or is flagged for your attention, and all meetings and appointments go straight into your calendar.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">Inbox Zero</span>
+                        <span class="service-tag">Appointment Booking</span>
+                        <span class="service-tag">Follow-ups</span>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon si-report">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8B4EC9" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                    </div>
+                    <h3>Reporting</h3>
+                    <p>Using your existing tools (or ours), we'll deliver clear, actionable reports on your business. Sales trends, outstanding accounts, margin contributions, and whatever metrics matter most to you.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">Sales Trending</span>
+                        <span class="service-tag">Margin Analysis</span>
+                        <span class="service-tag">Outstanding Accounts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US -->
+    <section class="why" id="why">
+        <div class="container">
+            <div class="why-grid">
+                <div class="why-content reveal">
+                    <span class="section-label">Why Small Biz Admin</span>
+                    <h2>Premium support without the overhead</h2>
+                    <p>Get the reliability of a dedicated employee with the flexibility of a contractor, and none of the HR headaches.</p>
+                    <div class="why-list">
+                        <div class="why-item">
+                            <div class="why-check">✓</div>
+                            <div class="why-item-text">
+                                <h4>Pay per task, not per hour</h4>
+                                <p>You only pay for the work that gets done. No idle hours, no rounding up, no guesswork.</p>
+                            </div>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-check">✓</div>
+                            <div class="why-item-text">
+                                <h4>No lock-in contracts</h4>
+                                <p>Scale up when you're busy, scale down when you're not. Total flexibility.</p>
+                            </div>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-check">✓</div>
+                            <div class="why-item-text">
+                                <h4>No super, no payroll tax, no leave</h4>
+                                <p>All the output, none of the overheads that come with putting someone on the books.</p>
+                            </div>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-check">✓</div>
+                            <div class="why-item-text">
+                                <h4>Speak directly to the owners</h4>
+                                <p>Your account matters to us. You'll always deal with the people doing the work.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-visual reveal">
+                    <div class="comparison-header">
+                        <div class="comp-col-head comp-them">Part-time Employee</div>
+                        <div class="comp-col-head comp-us">Small Biz Admin</div>
+                    </div>
+                    <div class="comparison-rows">
+                        <div class="comp-row">
+                            <div class="comp-cell them">Super &amp; payroll tax</div>
+                            <div class="comp-cell us">None</div>
+                        </div>
+                        <div class="comp-row">
+                            <div class="comp-cell them">Sick &amp; annual leave</div>
+                            <div class="comp-cell us">None</div>
+                        </div>
+                        <div class="comp-row">
+                            <div class="comp-cell them">Lock-in contract</div>
+                            <div class="comp-cell us">Flexible scaling</div>
+                        </div>
+                        <div class="comp-row">
+                            <div class="comp-cell them">Management overhead</div>
+                            <div class="comp-cell us">Self-managed</div>
+                        </div>
+                        <div class="comp-row">
+                            <div class="comp-cell them">Training required</div>
+                            <div class="comp-cell us">Ready to go</div>
+                        </div>
+                        <div class="comp-row">
+                            <div class="comp-cell them">$35-45k+ p.a.</div>
+                            <div class="comp-cell us">Fraction of the cost</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-inner">
+                <div class="about-photo reveal">
+                    <div class="about-photo-icon">👫</div>
+                    <div class="about-photo-text">Your photo here</div>
+                </div>
+                <div class="about-content reveal">
+                    <span class="section-label">About Us</span>
+                    <h2>A husband &amp; wife team who get small business</h2>
+                    <p>We're a Brisbane-based duo with two decades of administration experience across healthcare, e-commerce, transportation, and sports administration.</p>
+                    <p>We started Small Biz Admin because we saw too many owner-operators buried in paperwork that was keeping them from the work they actually loved. We knew we could help, and we've been doing exactly that ever since.</p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <span class="num">20+</span>
+                            <span class="label">Years Experience</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="num">5+</span>
+                            <span class="label">Industries Served</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="num">100%</span>
+                            <span class="label">Brisbane Based</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="reveal">
+                <h2>Ready to stop drowning in admin?</h2>
+                <p>Get in touch for a no-obligation chat about what's eating your time, and how we can take it off your plate.</p>
+                <a href="mailto:admin@smallbizadmin.com.au" class="btn-warm">
+                    Email Us Today
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <a href="#" class="footer-logo">Small Biz <span>Admin</span></a>
+                <div class="footer-links">
+                    <a href="mailto:admin@smallbizadmin.com.au">admin@smallbizadmin.com.au</a>
+                    <span>&copy; Small Biz Admin 2025</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Nav scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
